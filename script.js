@@ -2,7 +2,7 @@
 const prizeData = [
     { value: 10000, img: 'images/10k.png', elementId: 'chk-10k', weight: 20 },
     { value: 20000, img: 'images/20k.png', elementId: 'chk-20k', weight: 70 },
-    { value: 50000, img: 'images/50k.png', elementId: 'chk-50k', weight: 10 },
+    { value: 50000, img: 'images/50k.png', elementId: 'chk-50k', weight: 15 },
     { value: 100000, img: 'images/100k.png', elementId: 'chk-100k', weight: 2 },
     { value: 200000, img: 'images/200k.png', elementId: 'chk-200k', weight: 1 },
     { value: 500000, img: 'images/500k.png', elementId: 'chk-500k', weight: 0.1 }
