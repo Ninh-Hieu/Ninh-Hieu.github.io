@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lì Xì May Mắn Đầu Năm</title>
+    <link rel="icon" href="images/bao-li-xi.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="click-overlay" onclick="vaoNha()">
+        <div class="overlay-content">
+            <h1>🌸 CHÚC MỪNG NĂM MỚI 🌸</h1>
+            <p>(Chạm vào màn hình để bắt đầu)</p>
+            <div class="hand-icon">👆</div>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="title">🧧 VẠN SỰ NHƯ Ý 🧧</h1>
+
+        <div class="lixi-container">
+            <div id="lixi-baobi" onclick="moLiXi()">
+                <img src="images/bao-li-xi.png" alt="Bao Lì Xì" class="lixi-img">
+            </div>
+        </div>
+
+        <div id="result-modal" class="hidden">
+            <div class="modal-content">
+                <h2>🎉 CHÚC MỪNG NĂM MỚI 🎉</h2>
+                <p>Bạn nhận được:</p>
+                <img id="money-img" src="" alt="Tờ tiền" class="money-img">
+                <h1 id="money-value" class="money-text">0 VNĐ</h1>
+                <button onclick="resetGame()">Người Tiếp Theo</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-panel">
+        <h3>⚙️ Cấu Hình Mệnh Giá</h3>
+        <label><input type="checkbox" id="chk-10k" checked> 10.000 VNĐ</label>
+        <label><input type="checkbox" id="chk-20k" checked> 20.000 VNĐ</label>
+        <label><input type="checkbox" id="chk-50k" checked> 50.000 VNĐ</label>
+        <label><input type="checkbox" id="chk-100k"> 100.000 VNĐ</label>
+        <label><input type="checkbox" id="chk-200k"> 200.000 VNĐ</label>
+        <label><input type="checkbox" id="chk-500k"> 500.000 VNĐ</label>
+    </div>
+    <audio id="bg-music" loop autoplay>
+        <source src="sounds/nhac-tet.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="win-sound">
+        <source src="sounds/ting-ting.mp3" type="audio/mpeg">
+    </audio>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

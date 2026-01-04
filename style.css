@@ -1,0 +1,187 @@
+body {
+    background-color: #b71c1c;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #ffd700;
+}
+
+.title {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px #000;
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   CẬP NHẬT GIAO DIỆN & CĂN GIỮA
+========================================= */
+
+/* 1. Sửa lớp cha để căn giữa tuyệt đối */
+.lixi-container {
+    display: flex;             /* Dùng Flexbox */
+    justify-content: center;   /* Căn giữa theo chiều ngang */
+    align-items: center;       /* Căn giữa theo chiều dọc */
+    width: 100%;               /* Chiếm toàn bộ chiều rộng màn hình */
+    margin-top: 20px;          /* Cách tiêu đề ra một chút cho thoáng */
+    perspective: 1000px;       /* Tạo chiều sâu 3D cho hiệu ứng con */
+}
+
+/* 2. Sửa bao lì xì (Code của bạn + thêm căn giữa) */
+#lixi-baobi {
+    width: 280px;
+    height: auto;
+    cursor: pointer;
+    background: transparent;
+    
+    /* CĂN GIỮA: Thêm dòng này để chắc chắn nó nằm giữa nếu flexbox lỗi */
+    margin: 0 auto; 
+    
+    /* Animation & Transition */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: floating 3s ease-in-out infinite;
+}
+
+/* Ảnh bao lì xì PNG */
+.lixi-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Bóng đổ 3D */
+    filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4));
+    transition: all 0.4s ease;
+}
+
+/* --- HIỆU ỨNG TƯƠNG TÁC (HOVER) --- */
+#lixi-baobi:hover {
+    animation-play-state: paused; 
+    transform: translateY(-20px) scale(1.05);
+}
+
+#lixi-baobi:hover .lixi-img {
+    /* 1. Bóng đổ đậm hơn nữa */
+    filter: drop-shadow(0 30px 35px rgba(0,0,0,0.6));
+    
+    /* 2. CHỈNH TỐC ĐỘ: 
+       Giảm từ 0.4s xuống 0.25s để rung nhanh như điện giật 
+    */
+    animation: jiggle 0.25s linear infinite;
+}
+
+/* --- KEYFRAMES --- */
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes jiggle {
+    0% { transform: rotate(0deg) translate(0, 0); }
+    25% { transform: rotate(8deg) translate(2px, 2px); }   /* Tăng lên 8 độ + dịch chuyển nhẹ */
+    50% { transform: rotate(0deg) translate(0, 0); }
+    75% { transform: rotate(-8deg) translate(-2px, 2px); } /* Giảm xuống -8 độ + dịch chuyển nhẹ */
+    100% { transform: rotate(0deg) translate(0, 0); }
+}
+
+/* Modal Kết quả */
+.hidden { 
+    display: none !important; 
+}
+
+/* --- GIỮ NGUYÊN ĐOẠN NÀY --- */
+#result-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex; /* Cái dòng này đang gây xung đột nếu không có !important ở trên */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    color: #d32f2f;
+    animation: popUp 0.5s ease-out;
+    max-width: 90%;
+}
+.money-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Giới hạn chiều cao ảnh tiền */
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+button {
+    background: #d32f2f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+@keyframes popUp {
+    from {transform: scale(0);}
+    to {transform: scale(1);}
+}
+
+/* Admin Panel */
+.admin-panel {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    color: #333;
+    font-size: 0.9rem;
+}
+.admin-panel label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+/* --- MÀN HÌNH GÕ CỬA --- */
+#click-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(183, 28, 28, 0.95); /* Màu đỏ Tết che mờ */
+    z-index: 99999; /* Luôn nằm trên cùng */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+}
+
+.overlay-content {
+    text-align: center;
+    color: #ffd700;
+    animation: pulse 1.5s infinite;
+}
+
+.overlay-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hand-icon {
+    font-size: 4rem;
+    margin-top: 20px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
